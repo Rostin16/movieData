@@ -1,6 +1,6 @@
 const { default: mongoose } = require("mongoose");
 require('dotenv').config();
-let url=process.env.DB_URL;
+let url=process.env.MY_DB;
 const db= async()=> {
     try {
         console.log(url);
