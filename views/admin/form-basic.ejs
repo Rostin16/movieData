@@ -1,25 +1,20 @@
 <%- include('./partials/header') %>
 <!-- ============================================================== -->
-<!-- End Left Sidebar - style you can find in sidebar.scss  -->
-<!-- ============================================================== -->
-<!-- ============================================================== -->
 <!-- Page wrapper  -->
 <!-- ============================================================== -->
 <div class="page-wrapper">
   <!-- ============================================================== -->
-  <!-- Bread crumb and right sidebar toggle -->
+  <!-- Breadcrumb -->
   <!-- ============================================================== -->
   <div class="page-breadcrumb">
     <div class="row">
       <div class="col-12 d-flex no-block align-items-center">
-        <h4 class="page-title">Form Basic</h4>
+
         <div class="ms-auto text-end">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">
-                Library
-              </li>
+              <li class="breadcrumb-item active" aria-current="page">Add Movie</li>
             </ol>
           </nav>
         </div>
@@ -27,61 +22,42 @@
     </div>
   </div>
   <!-- ============================================================== -->
-  <!-- End Bread crumb and right sidebar toggle -->
+  <!-- End Breadcrumb -->
   <!-- ============================================================== -->
+
   <!-- ============================================================== -->
-  <!-- Container fluid  -->
+  <!-- Container fluid -->
   <!-- ============================================================== -->
   <div class="container-fluid">
-    <!-- ============================================================== -->
-    <!-- Start Page Content -->
-    <!-- ============================================================== -->
     <div class="row">
-      <div class="col-md-6">
-        <div class="card">
-          <form class="form-horizontal" method="post" action="" enctype="multipart/form-data" >
+      <div class="col-md-8 offset-md-2">
+        <div class="card" style="border: 1px solid #ddd; border-radius: 10px; padding: 20px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+          <form class="form-horizontal" method="post" action="" enctype="multipart/form-data">
             <div class="card-body">
-              <h4 class="card-title">Movie Info</h4>
-              <div class="form-group row">
-                <label
-                  for="fname"
-                  class="col-sm-3 text-end control-label col-form-label"
-                  >Movie Title</label
-                >
+              <h4 class="card-title" style="font-size: 24px; font-weight: bold; color: #1872c7; text-align: center;">Movie Info</h4>
+
+              <!-- Movie Title -->
+              <div class="form-group row mb-4">
+                <label for="title" class="col-sm-3 col-form-label text-end" style="font-size: 16px;">Movie Title</label>
                 <div class="col-sm-9">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="fname"
-                    name="title"
-                    placeholder="Movie Title Here"
-                  />
+                  <input type="text" class="form-control" id="title" name="title" placeholder="Enter Movie Title" style="border: 1px solid #ddd; border-radius: 5px; padding: 10px;" />
                 </div>
               </div>
-              <div class="form-group row">
-                <label
-                  for="lname"
-                  class="col-sm-3 text-end control-label col-form-label"
-                  >Img</label
-                >
+
+              <!-- Image Upload -->
+              <div class="form-group row mb-4">
+                <label for="image" class="col-sm-3 col-form-label text-end" style="font-size: 16px;">Image</label>
                 <div class="col-sm-9">
-                  <input
-                    type="file"
-                    class="form-control"
-                    id="lname"
-                    name="image"
-                  />
+                  <input type="file" class="form-control" id="image" name="image" style="border: 1px solid #ddd; border-radius: 5px; padding: 10px;" />
                 </div>
               </div>
-              <div class="form-group row">
-                <label
-                  for="lname"
-                  class="col-sm-3 text-end control-label col-form-label"
-                  >Rating</label
-                >
+
+              <!-- Rating -->
+              <div class="form-group row mb-4">
+                <label for="rating" class="col-sm-3 col-form-label text-end" style="font-size: 16px;">Rating</label>
                 <div class="col-sm-9">
-                  <select class="form-select" name="rating">
-                    <option selected>--Select--</option>
+                  <select class="form-select" id="rating" name="rating" style="border: 1px solid #ddd; border-radius: 5px; padding: 10px;">
+                    <option value="" disabled selected>Select Rating</option>
                     <option value="⭐">⭐</option>
                     <option value="⭐⭐">⭐⭐</option>
                     <option value="⭐⭐⭐">⭐⭐⭐</option>
@@ -90,35 +66,52 @@
                   </select>
                 </div>
               </div>
-            </div>
-            <div class="border-top">
-              <div class="card-body">
-                <button type="submit" class="btn btn-primary">
-                  Submit
-                </button>
+
+              <!-- About the Movie -->
+              <div class="form-group row mb-4">
+                <label for="about" class="col-sm-3 col-form-label text-end" style="font-size: 16px;">About</label>
+                <div class="col-sm-9">
+                  <textarea class="form-control" id="about" name="abt" rows="4" placeholder="Enter about the movie" style="border: 1px solid #ddd; border-radius: 5px; padding: 10px;"></textarea>
+                </div>
+              </div>
+
+              <!-- Release Date -->
+              <div class="form-group row mb-4">
+                <label for="date" class="col-sm-3 col-form-label text-end" style="font-size: 16px;">Release Date</label>
+                <div class="col-sm-9">
+                  <input type="date" class="form-control" id="date" name="date" style="border: 1px solid #ddd; border-radius: 5px; padding: 10px;" />
+                </div>
+              </div>
+
+              <!-- Movie Genres -->
+              <div class="form-group row mb-4">
+                <label for="genres" class="col-sm-3 col-form-label text-end" style="font-size: 16px;">Genres</label>
+                <div class="col-sm-9">
+                  <select class="form-select" id="genres" name="genres[]" >
+                    <option value="" disabled selected>Select Movie Generes</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Fiction">Fiction</option>
+                    <option value="Action">Action</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="form-group row">
+                <div class="col-sm-12 text-center">
+                  <button type="submit" class="btn btn-primary" style="padding: 10px 30px; border-radius: 5px;">Submit</button>
+                </div>
               </div>
             </div>
           </form>
         </div>
       </div>
     </div>
-    <!-- editor -->
-    
-    <!-- ============================================================== -->
-    <!-- End PAge Content -->
-    <!-- ============================================================== -->
-    <!-- ============================================================== -->
-    <!-- Right sidebar -->
-    <!-- ============================================================== -->
-    <!-- .right-sidebar -->
-    <!-- ============================================================== -->
-    <!-- End Right sidebar -->
-    <!-- ============================================================== -->
   </div>
   <!-- ============================================================== -->
-  <!-- End Container fluid  -->
+  <!-- End Container fluid -->
   <!-- ============================================================== -->
-  <!-- ============================================================== -->
-  <!-- footer -->
-  <!-- ============================================================== -->
-  <%- include('./partials/footer') %>
+<%- include('./partials/footer') %>
