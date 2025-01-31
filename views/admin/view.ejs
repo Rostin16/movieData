@@ -52,6 +52,7 @@
                 <th scope="col" style="font-weight: bold;">Description</th>
                 <th scope="col" style="font-weight: bold;">Release Date</th>
                 <th scope="col" style="font-weight: bold;">Generes</th>
+                <th scope="col" style="font-weight: bold; text-align: center;">Action</th>  <!-- Centered Action Column -->
                 
             </tr>
             
@@ -69,9 +70,19 @@
                   <td><%= movie.title %></td>
                   <td><%= movie.rating %></td>
                   <td><%= movie.abt %></td>
-                  <td><%= movie.date %></td>
+                  <td><%= new Date(movie.date).toLocaleString("en-US", { 
+                    year: "numeric", 
+                    month: "short", 
+                    day: "2-digit", 
+                    hour: "2-digit", 
+                    minute: "2-digit", 
+                    hour12: true 
+                  }) %></td>
+                  
                   <td><%= movie.genres %></td>
+                  
                   <td>
+             
                     <a href="/movie/delete/<%= movie.id %>" class="dlt" style="background-color: rgb(211, 46, 46); color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: bold; margin-right: 10px;">Delete</a>
                     <a href="/edit/<%= movie.id %>" class="edt" style="background-color: rgb(32, 109, 209); color: white; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: bold;">Edit</a>
                     

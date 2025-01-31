@@ -98,6 +98,36 @@
                 </div>
               </div>
 
+              <div class="form-group row mb-4">
+                <label for="about" class="col-sm-3 col-form-label text-end" style="font-size: 16px;">About</label>
+                <div class="col-sm-9">
+                  <textarea class="form-control" id="about"  value="<%= movie.about %>" name="abt" rows="4" placeholder="Enter about the movie" style="border: 1px solid #ddd; border-radius: 5px; padding: 10px;"></textarea>
+                </div>
+              </div>
+
+              <!-- Release Date -->
+              <div class="form-group row mb-4">
+                <label for="date" class="col-sm-3 col-form-label text-end" style="font-size: 16px;">Release Date</label>
+                <div class="col-sm-9">
+                  <input type="date" class="form-control" id="date"  value="<%= movie.date %>" name="date" style="border: 1px solid #ddd; border-radius: 5px; padding: 10px;" />
+                </div>
+              </div>
+
+              <!-- Movie Genres -->
+              <div class="form-group row mb-4">
+                <label for="genres" class="col-sm-3 col-form-label text-end" style="font-size: 16px;">Genres</label>
+                <div class="col-sm-9">
+                  <select class="form-select" id="genres" name="genres[]" >
+                    <option value="" disabled selected>Select Movie Generes</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Fiction">Fiction</option>
+                    <option value="Action">Action</option>
+                  </select>
+                </div>
+              </div>
 
               
             </div>

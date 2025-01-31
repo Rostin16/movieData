@@ -1,5 +1,9 @@
+const movieModle = require("../models/movieModels");
+
 module.exports.homePage = (req, res) => {
-    return res.render('./client/home');// render the home template
+    
+    return res.render('./client/home');
+
 }
 
 module.exports.aboutPage = (req, res) => {
@@ -14,10 +18,25 @@ module.exports.joinusPage = (req, res) => {
     return res.render('./client/joinus');
 }
 
-module.exports.reviewPage = (req, res) => {
-    return res.render('./client/review');
+module.exports.reviewPage = async(req, res) => {
+    try {
+        let movieList=await movieModle.find({});//alll data come
+        return res.render('./client/review',{movieList});
+    } catch (error) {
+        console.log(error.message);
+        return res.render('./client/review',{movieList:[]});
+        
+    }
+   
 }
 
-module.exports.singlePage = (req, res) => {
-    return res.render('./client/single');
+module.exports.singlePage =async (req, res) => {
+    try {
+        let movie=await movieModle.findById(req.params.id);//alll data come
+        return res.render('./client/single',{movie});
+    } catch (error) {
+        console.log(error.message);
+        return res.render('./client/single',{movie:{}});
+        
+    }
 }
