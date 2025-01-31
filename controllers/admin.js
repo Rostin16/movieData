@@ -1,5 +1,6 @@
 const movieModle = require("../models/movieModels");
-const fs = require('fs')
+const fs = require('fs');
+const userModel = require("../models/userModel");
 module.exports.homePage = (req, res) => {
     return res.render('./admin/index');
 }
@@ -77,3 +78,54 @@ module.exports.movieEditPage = async (req, res) => {
         return res.render('/admin/edit', { movie: obj });
     }
 }
+module.exports.signupPage=(req, res) => {
+    return res.render('./admin/signup.ejs');
+}
+module.exports.signup=async (req, res) => {
+    try {
+        let {password,confirm_password} = req.body;
+       if(password === confirm_password){
+        let user=  await userModel.create(req.body);
+        console.log("user created successfully!");
+        return res.redirect('/login');
+       }else{
+        console.log("Sorry! confirm password not match with password!");
+        return res.redirect(req.get("Referrer") || "/");
+       }
+    } catch (error) {
+        console.log('error.message');
+        return res.redirect(req.get('Referrer') || '/');
+        
+    }
+};
+module.exports.loginPage=(req,res) => {
+    return res.render("./admin/login");
+};
+module.exports.login=async (req,res) => {
+  try {
+    let {username,password} = req.body;
+    let user=await userModel.findOne({username:username});
+    if(user){
+        if(user.password === password){
+        console.log("login Successfully!");
+        res.cookie('token', user.id)
+        return res.redirect("/admin");
+        }else{
+        console.log("incorrect password!");
+        return res.redirect(req.get("Referrer")|| '/');
+        }
+    }else{
+        console.log("User not found!");
+        return res.redirect("/signup");
+        
+    }
+  } catch (error) {
+    console.log(error.message);
+    return res.redirect(req.get("Referrer")||"/");
+    
+  }
+};
+ module.exports.logout=async (req,res)=>{
+    res.clearCookie('token');
+    return res.redirect(req.get("Referrer")||"/");
+ }
