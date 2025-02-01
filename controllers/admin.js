@@ -110,7 +110,8 @@ module.exports.login=async (req,res) => {
         console.log("login Successfully!");
         res.cookie('token', user.id)
         return res.redirect("/admin");
-        }else{
+        } else
+        {
         console.log("incorrect password!");
         return res.redirect(req.get("Referrer")|| '/');
         }
