@@ -5,4 +5,5 @@ const router=Router();
 
 router.use('/', clientRouter);
 router.use('/', adminRouter);
+
  module.exports = router;

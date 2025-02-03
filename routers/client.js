@@ -11,4 +11,5 @@ clientRouter.get('/joinus', clientController.joinusPage);
 clientRouter.get('/review', clientController.reviewPage);
 clientRouter.get('/single/:id', clientController.singlePage);
 
+
 module.exports = clientRouter;

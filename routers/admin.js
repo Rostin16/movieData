@@ -17,7 +17,7 @@ adminRouter.get('/edit/:id', adminController.movieEditPage)
 
  adminRouter.get('/signup' , adminController.signupPage);
  adminRouter.post('/signup' , adminController.signup);
- 
+
  adminRouter.get('/login', adminController.loginPage)
 adminRouter.post('/login', adminController.login)
  

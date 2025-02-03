@@ -101,10 +101,14 @@ module.exports.signup=async (req, res) => {
 module.exports.loginPage=(req,res) => {
     return res.render("./admin/login");
 };
+
+
 module.exports.login=async (req,res) => {
   try {
+
     let {username,password} = req.body;
     let user=await userModel.findOne({username:username});
+    console.log(user);
     if(user){
         if(user.password === password){
         console.log("login Successfully!");
@@ -124,8 +128,11 @@ module.exports.login=async (req,res) => {
     console.log(error.message);
     return res.redirect(req.get("Referrer")||"/");
     
-  }
-};
+  };
+
+  
+}
+
  module.exports.logout=async (req,res)=>{
     res.clearCookie('token');
     return res.redirect(req.get("Referrer")||"/");

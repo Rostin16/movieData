@@ -1,5 +1,6 @@
 const movieModle = require("../models/movieModels");
 
+
 module.exports.homePage = (req, res) => {
     
     return res.render('./client/home');
@@ -17,6 +18,7 @@ module.exports.contactPage = (req, res) => {
 module.exports.joinusPage = (req, res) => {
     return res.render('./client/joinus');
 }
+
 
 module.exports.reviewPage = async(req, res) => {
     try {
